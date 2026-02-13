@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-dashboard
+  namespace: my-dashboard
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-dashboard
+  template:
+    metadata:
+      labels:
+        app: my-dashboard
+    spec:
+      containers:
+      - name: my-dashboard
+        image: registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: APP_VERSION
+          value: "1.0"
+
