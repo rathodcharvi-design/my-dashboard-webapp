@@ -1,4 +1,4 @@
-# My Dashboard Web App — Flask on DigitalOcean Kubernetes (DOKS)
+# My Dashboard Web App on DigitalOcean Kubernetes (DOKS)
 
 This repository contains the My Dashboard Flask application containerized with Docker, pushed to DigitalOcean Container Registry (DOCR), and deployed on DigitalOcean Kubernetes (DOKS) using:
 
@@ -154,4 +154,15 @@ HPA shows cpu: <unknown>/70%
 ## Cleanup
 
     kubectl delete namespace my-dashboard
+
+---
+
+## References
+
+- DigitalOcean Kubernetes (DOKS): https://docs.digitalocean.com/products/kubernetes/
+- DigitalOcean Container Registry (DOCR): https://docs.digitalocean.com/products/container-registry/
+- doctl CLI Installation: https://docs.digitalocean.com/reference/doctl/how-to/install/
+- Kubernetes Documentation: https://kubernetes.io/docs/home/
+- Kubernetes Metrics Server: https://github.com/kubernetes-sigs/metrics-server
+- Docker Documentation: https://docs.docker.com/
 
