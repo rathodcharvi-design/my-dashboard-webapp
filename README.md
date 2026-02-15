@@ -56,11 +56,11 @@ Login to registry:
 
 Build image:
 
-    docker build -t registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0 .
+    docker build -t registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.1 .
 
 Push image:
 
-    docker push registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0
+    docker push registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.1
 
 ---
 
@@ -141,8 +141,8 @@ ImagePullBackOff / 401 Unauthorized
 CrashLoopBackOff (exec format error)
 
     docker build --platform=linux/amd64 \
-      -t registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0 .
-    docker push registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0
+      -t registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.1 .
+    docker push registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.1
     kubectl rollout restart deployment my-dashboard -n my-dashboard
 
 HPA shows cpu: <unknown>/70%
