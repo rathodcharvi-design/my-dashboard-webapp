@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: my-dashboard
   namespace: my-dashboard
+  labels:
+    app: my-dashboard
 spec:
   replicas: 2
   selector:
@@ -15,12 +17,36 @@ spec:
     spec:
       containers:
       - name: my-dashboard
-        image: registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.0
+        image: registry.digitalocean.com/my-dashboard-registry/my-dashboard:1.1
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
         - name: ENVIRONMENT
           value: "production"
         - name: APP_VERSION
-          value: "1.0"
+          value: "1.1"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          failureThreshold: 3
 
